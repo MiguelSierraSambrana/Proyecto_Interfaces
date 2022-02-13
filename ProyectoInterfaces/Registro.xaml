@@ -1,0 +1,121 @@
+﻿<Window x:Class="ProyectoInterfaces.Registro"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="18"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto#Roboto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:MaterialDesign1="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Registro" Height="470" Width="425" MinHeight="470" MinWidth="425" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+
+    <Grid>
+
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+
+                <MaterialDesign1:ColorZone Mode="PrimaryDark">
+
+                    <StackPanel HorizontalAlignment="Right">
+
+                        <Button x:Name="CerrarBtn1" Width="30" Height="30" MaterialDesign1:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="CerrarBtn1_Click">
+
+                            <MaterialDesign1:PackIcon Kind="WindowClose">
+
+                            </MaterialDesign1:PackIcon>
+                        </Button>
+
+                    </StackPanel>
+
+                </MaterialDesign1:ColorZone>
+            </Grid>
+
+        </Border>
+
+        <Grid Grid.Row="1">
+            <MaterialDesign1:ColorZone Mode="PrimaryMid">
+                <TextBlock Text="Registrar Usuario" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 50 0 10"/>
+            </MaterialDesign1:ColorZone>
+        </Grid>
+
+        <Grid Grid.Row="2">
+
+            <StackPanel Orientation="Vertical" Margin="20 20 0 0">
+
+                <!-- Casilla usuario -->
+                <StackPanel Orientation="Horizontal">
+
+                    <MaterialDesign1:PackIcon Kind="Account" Foreground="{Binding ElementName=txt_usuario, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <TextBox x:Name="txt_usuario" Width="300" MaterialDesign1:HintAssist.Hint="Inserte Usuario" MaterialDesign1:HintAssist.IsFloating="True" FontWeight="Bold" Cursor="IBeam"/>
+
+                </StackPanel>
+
+                <!-- Casilla password -->
+                <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
+
+                    <MaterialDesign1:PackIcon Kind="Password"  Foreground="{Binding ElementName=txt_contraseña, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <PasswordBox x:Name="txt_contraseña" Width="300" MaterialDesign1:HintAssist.Hint="Inserte Password" MaterialDesign1:HintAssist.IsFloating="True" FontWeight="Bold" Cursor="IBeam"/>
+
+                </StackPanel>
+
+                <!-- Casilla Re password -->
+                <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
+
+                    <MaterialDesign1:PackIcon Kind="Password"  Foreground="{Binding ElementName=txt_contraseña2, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 4"/>
+                    <PasswordBox x:Name="txt_contraseña2" Width="300" MaterialDesign1:HintAssist.Hint="Reinserte Password" MaterialDesign1:HintAssist.IsFloating="True" FontWeight="Bold" Cursor="IBeam"/>
+
+                </StackPanel>
+
+
+                <!-- botones -->
+                <Button x:Name="RegistrarseBtn1" 
+                    Style="{DynamicResource MaterialDesignRaisedLightButton}" Content="Registrarse" Width="120" HorizontalAlignment="Center" Margin="0 50 70 0" Click="RegistrarseBtn1_Click"/>
+                
+            </StackPanel>
+
+        </Grid>
+        <!-- DialogHost -->
+        <MaterialDesign1:DialogHost IsOpen="False" x:Name="DialogHost1" Grid.RowSpan="3">
+            <MaterialDesign1:DialogHost.DialogContent>
+                <StackPanel Margin="15" Orientation="Vertical">
+                    <TextBlock Text="Realizado con éxito!"/>
+                    <Button x:Name="btnAceptar" Command="{x:Static MaterialDesign1:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=DialogHost1}"
+                        Style="{DynamicResource MaterialDesignFlatButton}" Content="Aceptar" Margin="0 10 0 0" Click="btnAceptar_Click"/>
+                </StackPanel>
+            </MaterialDesign1:DialogHost.DialogContent>
+        </MaterialDesign1:DialogHost>
+        <!-- DialogHost RELLENE CAMPOS -->
+        <MaterialDesign1:DialogHost IsOpen="False" x:Name="DialogHostCampos" Grid.Row="5" Grid.Column="2">
+            <MaterialDesign1:DialogHost.DialogContent>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text=" ¡Error! Rellene todos los campos" FontSize="20" Height="50" Width="300" HorizontalAlignment="Center"/>
+                    <Button x:Name="btnAceptarCampos" Command="{x:Static MaterialDesign1:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=DialogHostCampos}"
+                        Style="{DynamicResource MaterialDesignFlatButton}" Content="Aceptar"/>
+                </StackPanel>
+            </MaterialDesign1:DialogHost.DialogContent>
+        </MaterialDesign1:DialogHost>
+        <!-- DialogHost PASSWORD -->
+        <MaterialDesign1:DialogHost IsOpen="False" x:Name="DialogHostPassword" Grid.Row="5" Grid.Column="2">
+            <MaterialDesign1:DialogHost.DialogContent>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text=" ¡Error! La contraseña no coincide" FontSize="20" Height="50" Width="320" HorizontalAlignment="Center"/>
+                    <Button x:Name="btnAceptarPass" Command="{x:Static MaterialDesign1:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=DialogHostPassword}"
+                        Style="{DynamicResource MaterialDesignFlatButton}" Content="Aceptar"/>
+                </StackPanel>
+            </MaterialDesign1:DialogHost.DialogContent>
+        </MaterialDesign1:DialogHost>
+
+    </Grid>
+</Window>

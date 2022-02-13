@@ -1,0 +1,34 @@
+﻿<Window x:Class="ProyectoInterfaces.Splash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoInterfaces"
+        mc:Ignorable="d"
+        Title="Splash" Height="685" Width="960" 
+        ContentRendered="Window_ContentRendered" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/SplashScreen.png"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            
+
+        </Grid.RowDefinitions>
+
+        <ProgressBar x:Name="pbStatus" Grid.Row="15" Foreground="#FF355691" Minimum="0" Maximum="100" Value="0" Background="#FF30292F" Height="20"/>
+        
+        
+    </Grid>
+</Window>
